@@ -3,12 +3,17 @@ from pydantic import BaseModel
 import joblib
 import pandas as pd
 from typing import List, Dict
+import os
 
 # Define the FastAPI app
 app = FastAPI()
 
-# Load your model
-model = joblib.load('/model.pkl')
+# Get the directory of the current file
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Load your model from the same directory as the app.py file
+model_path = os.path.join(current_dir, 'model.pkl')
+model = joblib.load(model_path)
 
 # Define a request body model using Pydantic
 class IrisFeatures(BaseModel):
@@ -31,4 +36,3 @@ def predict(features: IrisFeatures):
 
     # Return the result as a JSON response
     return {"prediction": prediction.tolist()}
-
