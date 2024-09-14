@@ -8,7 +8,7 @@ from typing import List, Dict
 app = FastAPI()
 
 # Load your model
-model = joblib.load('/app/model.pkl')
+model = joblib.load('/model.pkl')
 
 # Define a request body model using Pydantic
 class IrisFeatures(BaseModel):
