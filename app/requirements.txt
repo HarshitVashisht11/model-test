@@ -1,5 +1,0 @@
-joblib
-pandas
-scikit-learn
-fastapi 
-uvicorn
